@@ -1,0 +1,12 @@
+<ion-view view-title="Masonry">
+  <ion-content>	
+	<div ng-controller="MasonryController">
+		<div class="card" ng-repeat="brick in masonrybricks">
+
+			<img ng-src="{{ brick.text }}">
+			
+		</div>
+	</div>
+	
+  </ion-content>
+</ion-view>

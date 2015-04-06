@@ -1,0 +1,14 @@
+<ion-view view-title="Take Picture">
+  <ion-content ng-controller="TakeImageController">
+  <div>
+  	<img src="{{image}}" style="width: 100%">
+		<button class="button button-block button-balanced" ng-click="takePicture()">
+	 	 Make Image
+		</button>
+		<button class="button button-block button-balanced" ng-click="update()">
+	 	 Upload Image
+		</button>
+
+	</div>
+  </ion-content>
+</ion-view> 
