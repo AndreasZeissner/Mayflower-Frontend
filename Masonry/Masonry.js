@@ -1,6 +1,17 @@
+	/*
+		Module used for all interaction with the Masonry Model wich is defined in the MasonryFactory
+
+		MasonryController -> View: main 
+		Loads all masonrybricks from the server 
+
+		TakeImageController -> View: takePicture
+		Used for makeing images and uploading them 
+
+	*/
 angular.module('MasonryModule', ['ngResource'])
 
 
+	
 	.controller('MasonryController', ['$scope', 'MasonryFactory', '$ionicLoading', function($scope, MasonryFactory, $ionicLoading){
 			// Calling Rest-> Getting data and closing ionicloading			
 			MasonryFactory.query(function(data) {
@@ -25,9 +36,8 @@ angular.module('MasonryModule', ['ngResource'])
 
 		}])
 
-	.controller('TakeImageController', ['$scope', 'MasonryFactory', 'Camera', '$ionicLoading',  function ($scope, MasonryFactory, Camera, $ionicLoading) {
-
-			$scope.image = null;
+	.controller('TakeImageController', ['$scope', 'MasonryFactory', 'Camera', '$ionicLoading',   function ($scope, MasonryFactory, Camera, $ionicLoading) {
+			$scope.image = "http://images.gofreedownload.net/tango-camera-photo-5741.jpg";
 			$scope.takePicture = function () {
 				Camera.getPicture().then(function(imageUri) {
 					$scope.image = "data:image/jpeg;base64," + imageUri;
@@ -41,7 +51,7 @@ angular.module('MasonryModule', ['ngResource'])
 				showLoading();
 				newImage.$save().then(function() {
 					hideLoading();
-					$scope.image = null;
+					$scope.image = "http://images.gofreedownload.net/tango-camera-photo-5741.jpg";
 				});
 			}
 
@@ -61,38 +71,6 @@ angular.module('MasonryModule', ['ngResource'])
 
 	.factory('MasonryFactory', ['$resource', function($resource) {
 		return $resource('http://www.almmp.de/Andreas/Mayflower/Backend/public/api/masonrybrick');
-	}])
-
-
-
-	// Factory for takeing Pictures
-
-	.factory('Camera', ['$q', 'MasonryFactory', function($q, MasonryFactory) {
-
-	  return {
-	    getPicture: function(options) {
-	      var q = $q.defer();
-
-	      navigator.camera.getPicture(function(result) {
-	        // Do any magic you need
-
-	        console.log(result);
-	        q.resolve(result);
-	      }, function(err) {
-	        q.reject(err);
-	      }, {
-	      	quality: 100, 
-	      	destinationType: 0,
-	      	encodingType: 0, 
-	      	allowEdit : true,
-  			targetWidth: 512,
-  			targetHeight: 512,
-
-	      });
-
-	      return q.promise;
-	    }
-	  }
 	}]);
 
 

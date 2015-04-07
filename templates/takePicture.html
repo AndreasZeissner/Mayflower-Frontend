@@ -1,14 +1,22 @@
-<ion-view view-title="Take Picture">
-  <ion-content ng-controller="TakeImageController">
-  <div>
-  	<img src="{{image}}" style="width: 100%">
-		<button class="button button-block button-balanced" ng-click="takePicture()">
-	 	 Make Image
-		</button>
-		<button class="button button-block button-balanced" ng-click="update()">
-	 	 Upload Image
-		</button>
+<ion-view title="Picture">
 
-	</div>
+
+  <ion-content ng-controller="TakeImageController" has-header="true" scroll="false">
+
+  	<img src="{{image}}" style="width: 100%">
+
+	  	<div class="row">
+	  		<div class="col col-50">
+				<button class="button button-block button-outline button-balanced" ng-click="takePicture()">
+			 	 Make Image
+				</button>
+			</div>
+			<div class="col col-50">
+				<button class="button button-block button-clear button-stable" ng-click="update()">
+			 	 Upload Image
+				</button>
+			</div>
+		</div>
   </ion-content>
 </ion-view> 
+
