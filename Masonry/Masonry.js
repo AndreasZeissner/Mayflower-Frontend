@@ -37,22 +37,33 @@ angular.module('MasonryModule', ['ngResource'])
 		}])
 
 	.controller('TakeImageController', ['$scope', 'MasonryFactory', 'Camera', '$ionicLoading',   function ($scope, MasonryFactory, Camera, $ionicLoading) {
-			$scope.image = "http://images.gofreedownload.net/tango-camera-photo-5741.jpg";
+			$scope.masonry = {
+
+				"text" : "http://images.gofreedownload.net/tango-camera-photo-5741.jpg",
+				"name" : null
+			};
+			
+			
+				
 			$scope.takePicture = function () {
 				Camera.getPicture().then(function(imageUri) {
-					$scope.image = "data:image/jpeg;base64," + imageUri;
-					
+					$scope.masonry.text = "data:image/jpeg;base64," + imageUri;
 				});
-
 			}
+
 			$scope.update = function () {
-				
-				var newImage = new MasonryFactory({text: $scope.image}); 
+				if($scope.masonry.text == "http://images.gofreedownload.net/tango-camera-photo-5741.jpg") {
+					alert('Take image first');
+				}else{
+				var newImage = new MasonryFactory($scope.masonry); 
+				console.log(newImage);
 				showLoading();
 				newImage.$save().then(function() {
 					hideLoading();
-					$scope.image = "http://images.gofreedownload.net/tango-camera-photo-5741.jpg";
+					$scope.masonry.text = "http://images.gofreedownload.net/tango-camera-photo-5741.jpg";
+					$scope.masonry.name = null;
 				});
+				}
 			}
 
 			var showLoading = function() {
@@ -63,10 +74,6 @@ angular.module('MasonryModule', ['ngResource'])
 			var hideLoading = function(){
 			    $ionicLoading.hide();
 			};
-
-			
-
-
 	}])
 
 	.factory('MasonryFactory', ['$resource', function($resource) {

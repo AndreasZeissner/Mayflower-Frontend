@@ -3,21 +3,24 @@ angular.module('CommonModule', [])
 		alert("TEST");
 	}])
 		// Factory for takeing Pictures
-	.factory('Camera', ['$q', 'MasonryFactory', function($q, MasonryFactory) {
+	.factory('Camera', ['$q', function($q) {
 
 	  return {
 	    getPicture: function(options) {
+
+	    	// defer prepares object to be asynchrouns
 	      var q = $q.defer();
 
 	      navigator.camera.getPicture(function(result) {
 	        // Do any magic you need
 
 	        console.log(result);
+	        // asynch object is resolved
 	        q.resolve(result);
 	      }, function(err) {
 	        q.reject(err);
 	      }, {
-	      	quality: 50, 
+	      	quality: 100, 
 	      	destinationType: 0,
 	      	encodingType: 0, 
 	      	allowEdit : true,

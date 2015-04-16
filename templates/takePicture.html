@@ -1,19 +1,19 @@
 <ion-view title="Picture">
-
-
   <ion-content ng-controller="TakeImageController" has-header="true" scroll="false">
-
-  	<img src="{{image}}" style="width: 100%">
-
+  	<img src="{{masonry.text}}" style="width: 100%">
+  		<label class="item item-input">
+  			<span class="input-label">Name</span>
+ 			 <input type="text"  ng-model="masonry.name" ng-maxlength="45">
+		</label>
 	  	<div class="row">
 	  		<div class="col col-50">
 				<button class="button button-block button-outline button-balanced" ng-click="takePicture()">
-			 	 Make Image
+			 	 Take image
 				</button>
 			</div>
 			<div class="col col-50">
 				<button class="button button-block button-clear button-stable" ng-click="update()">
-			 	 Upload Image
+			 	 Upload image
 				</button>
 			</div>
 		</div>

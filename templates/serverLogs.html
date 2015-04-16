@@ -1,0 +1,14 @@
+<ion-view view-title="ServerLogs">
+  <ion-content>	
+	<div ng-controller="ServerLogsController">
+		<div class="row" ng-repeat="log in logs"> 			
+			<div class="col col-50">
+				<p> {{log.fullUrl}} </p>
+			</div>
+			<div class="col col-50"> 
+				<p> {{log.method}} </p>
+			</div> 
+		</div>
+	</div>	
+  </ion-content>
+</ion-view>

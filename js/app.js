@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('mayflower', ['ionic', 'mayflower.controllers', 'MasonryModule', 'DiscogsModule', 'CommonModule'])
+angular.module('mayflower', ['ionic', 'mayflower.controllers', 'MasonryModule', 'DiscogsModule', 'CommonModule', 'ServerLogsModule'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -47,11 +47,11 @@ angular.module('mayflower', ['ionic', 'mayflower.controllers', 'MasonryModule', 
       }
     }
   })
-  .state('app.Discogs', {
-    url: "/Discogs",
+  .state('app.serverLogs', {
+    url: "/serverLogs",
     views: {
       'menuContent': {
-        templateUrl: "templates/Discogs.html"
+        templateUrl: "templates/serverLogs.html"
       }
     }
   });
