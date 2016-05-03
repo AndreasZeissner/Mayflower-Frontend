@@ -6,7 +6,7 @@
 
 		TakeImageController -> View: takePicture
 		Used for makeing images and uploading them 
-
+Angular Module
 	*/
 angular.module('MasonryModule', ['ngResource'])
 
